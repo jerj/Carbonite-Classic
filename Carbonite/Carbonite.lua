@@ -2843,7 +2843,7 @@ Nx.GatherInfo = {
 		{ 185,	"inv_misc_herb_08",L["Khadgar's Whisker"]},
 		{ 125,	"inv_misc_herb_03",L["Kingsblood"]},
 		{ 150,	"inv_misc_root_02",L["Liferoot"]},
-		{ 50,	"spell_shadow_seathanddecay",L["Mageroyal"]},
+		{ 50,	"inv_jewelry_talisman_03",L["Mageroyal"]},
 		{ 375,	"inv_misc_herb_manathistle",L["Mana Thistle"]},
 		{ 280,	"inv_misc_herb_mountainsilversage",L["Mountain Silversage"]},
 		{ 350,	"inv_misc_herb_netherbloom",L["Netherbloom"]},
@@ -3391,6 +3391,9 @@ function Nx:GatherImportCarb (nodeType)
 			for coords, nodetype in pairs(zoneT) do
 				local nx, ny = Nx:GatherConvert(coords)
 				local nodeId = Nx:GatherNodeToCarb (nodetype)
+				if nodeType == "NXMine" or nodeType == "NXHerb" then
+					nodeId = nodetype
+				end
 				if nx and ny and nodeId then
 					Nx:Gather (nodeType, nodeId, mapId, nx * 100, ny * 100)
 					cnt = cnt + 1
